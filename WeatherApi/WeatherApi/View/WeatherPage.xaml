@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="WeatherApi.View.WeatherPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="SBSearch"
+                       HorizontalOptions="CenterAndExpand" 
+                       SearchButtonPressed="SBSearch_SearchButtonPressed"/>
+
+            <map:Map x:Name="map">
+                <map:Map.ItemTemplate>
+                    <DataTemplate>
+                        <map:Pin Position="{Binding Position}"
+                             Address="{Binding Name}"
+                             Label="{Binding Sys.Country}"/>
+                    </DataTemplate>
+                </map:Map.ItemTemplate>
+            </map:Map>
+            
+            <StackLayout Spacing="10" Padding="20">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Temp:"/>
+                    
+                    <Label Text="{Binding Main.Temp}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Feels like:"/>
+                    
+                    <Label Text="{Binding Main.Feels_like}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Wind speed:"/>
+                    
+                    <Label Text="{Binding Wind.Speed}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Wind deg:"/>
+
+                    <Label Text="{Binding Wind.Deg}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout> 
+    </ContentPage.Content>
+</ContentPage>
